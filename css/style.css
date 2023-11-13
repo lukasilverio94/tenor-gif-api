@@ -1,0 +1,13 @@
+#container-gif {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+#container-gif img {
+    width: 100%;
+    max-width: 200px;
+}
