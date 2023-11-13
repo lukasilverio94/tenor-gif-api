@@ -1,4 +1,3 @@
-// API_KEY: AIzaSyA7HnnTH6-rwTRmkWze4MIhMIS9438UkSc
 const inputElement = document.querySelector("#filter");
 const searchBtn = document.querySelector("#search");
 const containerGif = document.querySelector("#container-gif");
@@ -11,10 +10,11 @@ searchBtn.addEventListener("click", getGifs);
 //Async Function Fetch data
 async function getGifs() {
   searchQuery = inputElement.value.trim();
+  console.log(searchQuery);
 
   const response = await fetch(url);
 
-  //data
+  //data from response
   const data = await response.json();
   console.log(data);
 
@@ -27,7 +27,7 @@ async function getGifs() {
       const img = document.createElement("img");
 
       img.classList.add("img-fluid");
-      img.setAttribute("src", gif.media[0].gif.url); // Adjust this based on the actual structure of your data
+      img.setAttribute("src", gif.media[0].gif.url);
 
       div.appendChild(img);
       containerGif.appendChild(div);
