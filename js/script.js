@@ -21,14 +21,12 @@ async function getGifs() {
 
   if (data.results && data.results.length > 0) {
     // Clear previous results
-    // clearResults();
+    clearResults();
 
     // Iterate over the results array and create DOM elements
     data.results.map((gif) => {
       const div = document.createElement("div");
-      const img = document.createElement("img");
-
-      div.id = "container-gif";
+      const img = document.createElement("img");  
 
       img.setAttribute("src", gif.media[0].gif.url); // Adjust this based on the actual structure of your data
 
@@ -36,12 +34,12 @@ async function getGifs() {
       containerGif.appendChild(div);
     });
   } else {
-    console.log("No results found.");
+    containerGif.textContent = "Not result found";
   }
 }
 
 // // Helper function to clear previous results
-// function clearResults() {
-//   const previousResults = document.querySelectorAll(".img-fluid");
-//   previousResults.forEach((result) => result.remove());
-// }
+function clearResults() {
+  const previousResults = document.querySelectorAll(".img-fluid");
+  previousResults.forEach((result) => result.remove());
+}

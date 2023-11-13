@@ -1,12 +1,12 @@
 #container-gif {
-    
-  gap: 20px; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px 0;
 }
+
 #container-gif img {
   width: 100%;
-  max-width: 200px;
 }
