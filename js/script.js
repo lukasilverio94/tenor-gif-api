@@ -1,11 +1,10 @@
 // API_KEY: AIzaSyA7HnnTH6-rwTRmkWze4MIhMIS9438UkSc
-const apiKey = "AIzaSyA7HnnTH6-rwTRmkWze4MIhMIS9438UkSc";
-const url = `https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=8`;
-
 const inputElement = document.querySelector("#filter");
 const searchBtn = document.querySelector("#search");
 const containerGif = document.querySelector("#container-gif");
 let searchQuery = "cats";
+const apiKey = "AIzaSyA7HnnTH6-rwTRmkWze4MIhMIS9438UkSc";
+const url = `https://api.tenor.com/v1/search?q=${searchQuery}&key=LIVDSRZULELA&limit=8`;
 
 searchBtn.addEventListener("click", getGifs);
 
@@ -22,12 +21,12 @@ async function getGifs() {
   if (data.results && data.results.length > 0) {
     // Clear previous results
     clearResults();
-
-    // Iterate over the results array and create DOM elements
-    data.results.map((gif) => {
+    // Iterate over the results  and create DOM elements
+    data.results.forEach((gif) => {
       const div = document.createElement("div");
-      const img = document.createElement("img");  
+      const img = document.createElement("img");
 
+      img.classList.add("img-fluid");
       img.setAttribute("src", gif.media[0].gif.url); // Adjust this based on the actual structure of your data
 
       div.appendChild(img);
@@ -40,6 +39,5 @@ async function getGifs() {
 
 // // Helper function to clear previous results
 function clearResults() {
-  const previousResults = document.querySelectorAll(".img-fluid");
-  previousResults.forEach((result) => result.remove());
+  containerGif.innerHTML = "";
 }
