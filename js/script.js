@@ -4,7 +4,8 @@ const url = `https://api.tenor.com/v1/search?q=excited&key=LIVDSRZULELA&limit=8`
 
 const inputElement = document.querySelector("#filter");
 const searchBtn = document.querySelector("#search");
-let searchQuery = "excited";
+const containerGif = document.querySelector("#container-gif");
+let searchQuery = "cats";
 
 searchBtn.addEventListener("click", getGifs);
 
@@ -20,28 +21,27 @@ async function getGifs() {
 
   if (data.results && data.results.length > 0) {
     // Clear previous results
-    clearResults();
+    // clearResults();
 
     // Iterate over the results array and create DOM elements
     data.results.map((gif) => {
       const div = document.createElement("div");
       const img = document.createElement("img");
-      
-      div.id= "container-gif"
-      img.classList.add("img-thumbnail");
-      
+
+      div.id = "container-gif";
+
       img.setAttribute("src", gif.media[0].gif.url); // Adjust this based on the actual structure of your data
 
       div.appendChild(img);
-      document.body.appendChild(div); 
+      containerGif.appendChild(div);
     });
   } else {
     console.log("No results found.");
   }
 }
 
-// Helper function to clear previous results
-function clearResults() {
-  const previousResults = document.querySelectorAll(".img-fluid");
-  previousResults.forEach((result) => result.remove());
-}
+// // Helper function to clear previous results
+// function clearResults() {
+//   const previousResults = document.querySelectorAll(".img-fluid");
+//   previousResults.forEach((result) => result.remove());
+// }
