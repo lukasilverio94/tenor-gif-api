@@ -11,8 +11,8 @@
   width: 100%;
 }
 
-@media (max-width: 768px){
-    #container-gif {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 768px) {
+  #container-gif {
+    grid-template-columns: 1fr;
+  }
 }
