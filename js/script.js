@@ -50,7 +50,7 @@ searchBtn.addEventListener("click", () => {
     clearResults();
     getGifs();
   } else {
-    containerGif.innerHTML = `<p class="text-danger fw-semibold">Invalid input</p>`;
+    containerGif.innerHTML = `<p class="text-danger fw-semibold">Invalid input, type something to search...</p>`;
   }
 });
 
