@@ -2,15 +2,11 @@ const inputElement = document.querySelector("#filter");
 const searchBtn = document.querySelector("#search");
 const containerGif = document.querySelector("#container-gif");
 let searchQuery = "cats";
-const apiKey = "AIzaSyA7HnnTH6-rwTRmkWze4MIhMIS9438UkSc";
-const url = `https://api.tenor.com/v1/search?q=${searchQuery}&key=LIVDSRZULELA&limit=8`;
-
-searchBtn.addEventListener("click", getGifs);
 
 //Async Function Fetch data
 async function getGifs() {
   searchQuery = inputElement.value.trim();
-  console.log(searchQuery);
+  const url = `https://api.tenor.com/v1/search?q=${searchQuery}&key=LIVDSRZULELA&limit=8`;
 
   const response = await fetch(url);
 
@@ -21,6 +17,8 @@ async function getGifs() {
   if (data.results && data.results.length > 0) {
     // Clear previous results
     clearResults();
+    //Check if user typed something at input
+    validateInput();
     // Iterate over the results  and create DOM elements
     data.results.forEach((gif) => {
       const div = document.createElement("div");
@@ -37,7 +35,14 @@ async function getGifs() {
   }
 }
 
+searchBtn.addEventListener("click", getGifs);
 // // Helper function to clear previous results
 function clearResults() {
   containerGif.innerHTML = "";
+}
+
+function validateInput() {
+  if (inputElement.value === "") {
+    containerGif.innerHTML = `<p class="text-danger fw-bold">Type something...</p>`;
+  }
 }
